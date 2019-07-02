@@ -1,0 +1,22 @@
+﻿@model LedTestPreview.ViewModels.LedViewModel
+@{
+    ViewData["Title"] = "Тестирование";
+}
+
+<h2 class="center-block">Тестирование диодной ленты</h2>
+
+<form method="post" asp-action="Connect" class="form-group">
+    <div class="form-group">
+        <label class="form-control"> Выберите порт </label>
+        <select asp-for="dev.Port" name="port" class="form-control">
+
+            @foreach (String dev in Model.Ports)
+            {
+                <option value="@dev">@dev</option>
+            }
+        </select>
+        </div>
+    <div class="form-group">
+        <input type="submit" value="Connect" class="btn-success form-control" />
+    </div>
+</form>

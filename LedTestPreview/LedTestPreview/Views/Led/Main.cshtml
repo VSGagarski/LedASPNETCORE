@@ -1,0 +1,29 @@
+﻿@model LedTestPreview.ViewModels.LedViewModel
+@{
+    ViewData["Title"] = "Main";
+    bool isDisabled = Model.dev.IsActive;
+}
+
+<h2 class="center-block">Основные команды</h2>
+<form method="post" action="Send" class="center-block" class="form-group">
+    <div class="form-group">
+        <button asp-action="Start" disabled="@(isDisabled)" class="form-control btn-success ">Start</button>
+    </div>
+
+    <div class="form-group">
+        <select asp-for="dev.Port" name="symbol" disabled="@(!isDisabled)" class="form-control">
+            <option value="1">1-Красный цвет</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+    </div>
+        <div class="form-group">
+            <button asp-action="Send" type="submit" disabled="@(!isDisabled)" class="form-control btn-info">Send</button>
+        </div>
+
+            <div class="form-group">
+                <button asp-action="Stop" disabled="@(!isDisabled)" class="form-control btn-warning">Stop</button>
+            </div>
+</form>
